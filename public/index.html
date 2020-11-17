@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
@@ -29,6 +30,20 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <div id="micro-app"></div>
+
+   <!-- <script type="text/javascript">
+      // These global functions are attached to window by the above scripts
+      const microFrontendsByRoute = {
+        '/micro/Front': window.microFront
+
+      };
+      const renderFunction = microFrontendsByRoute[window.location.pathname];
+
+      // Having determined the entry-point function, we now call it,
+      // giving it the ID of the element where it should render itself
+      renderFunction('micro-frontend-root');
+    </script>-->
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -40,4 +55,7 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  <script crossorigin src="http://localhost:3006/static/js/bundle.js"></script>
+
+  <!--<script src="../microProyects/bundle.js"></script>-->
 </html>

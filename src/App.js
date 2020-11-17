@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import { GlobalStore } from 'redux-micro-frontend';
+import { globalObject } from './globalStore/objects/newGlobalObject'
 
-function App() {
+
+
+function App(){
+
+const [prueba, setPrueba] = useState(null);
+    const globalStore = GlobalStore.Get();
+    const getGLobal = () => {
+        debugger
+        const global = globalStore.GetGlobalState();
+   /*     setPrueba(global.App1.micro1Global);*/
+        console.log(global.App1.micro1Global);
+    }
+
+    const setGLobal = () => {
+        debugger
+        globalStore.DispatchGlobalAction('App1',globalObject);
+        const global = globalStore.GetGlobalState();
+        console.log(global.App1.micro1Global);
+    }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Hellow from parent component </h1>
+        <h1>GLOBAL OBJECT {prueba}</h1>
+        <button onClick={getGLobal}>Get Global Store</button>
+        <button onClick={setGLobal}>Set Global Store</button>
     </div>
   );
 }
